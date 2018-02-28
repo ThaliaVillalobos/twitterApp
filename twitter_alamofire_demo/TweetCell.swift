@@ -27,9 +27,34 @@ class TweetCell: UITableViewCell {
             userScreenName.text = tweet.user.screenName
             createdAt.text = tweet.createdAtString
             retweetCount.text = (String(tweet.retweetCount))
-            
-            
         }
+    }
+    
+    @IBAction func didTapFavorite(_ sender: Any) {
+        tweet.favorited = true
+        tweet.favoriteCount! += 1
+        
+        APIManager.shared.favorite(tweet) { (tweet: Tweet?, error: Error?) in
+            if let  error = error {
+                print("Error favoriting tweet: \(error.localizedDescription)")
+            } else if let tweet = tweet {
+                print("Successfully favorited the following Tweet: \n\(tweet.text)")
+            }
+        }
+    }
+    
+    @IBAction func didTapRetweet(_ sender: Any) {
+        tweet.retweeted = true
+        tweet.retweetCount += 1
+        
+        APIManager.shared.retweet(tweet) { (tweet: Tweet?, error: Error?) in
+            if let  error = error {
+                print("Error retweet: \(error.localizedDescription)")
+            } else if let tweet = tweet {
+                print("Successfully retweet: \n\(tweet.text)")
+            }
+        }
+
     }
     
     override func awakeFromNib() {
