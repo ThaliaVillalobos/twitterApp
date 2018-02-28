@@ -11,10 +11,24 @@ import UIKit
 class TweetCell: UITableViewCell {
     
     @IBOutlet weak var tweetTextLabel: UILabel!
+    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var userScreenName: UILabel!
+    @IBOutlet weak var createdAt: UILabel!
+    @IBOutlet weak var retweetCount: UILabel!
+    @IBOutlet weak var favoritedCount: UILabel!
     
     var tweet: Tweet! {
         didSet {
             tweetTextLabel.text = tweet.text
+            favoritedCount.text = (String(describing:tweet.favoriteCount!))
+      
+            userName.text = tweet.user.name
+            userScreenName.text = tweet.user.screenName
+            createdAt.text = tweet.createdAtString
+            retweetCount.text = (String(tweet.retweetCount))
+            
+            
         }
     }
     
