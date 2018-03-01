@@ -132,7 +132,24 @@ class APIManager: SessionManager {
         }
     }
     
+    
+    
     // MARK: TODO: Un-Favorite a Tweet
+    func unfavorite(_ tweet: Tweet, completion: @escaping (Tweet?, Error?) -> ()) {
+        let urlString = "https://api.twitter.com/1.1/favorites/destroy.json"
+        let parameters = ["id": tweet.id]
+        request(URL(string:urlString)!, method: .post, parameters: parameters, encoding: URLEncoding.queryString).validate().responseJSON { (response) in
+            if response.result.isSuccess,
+                let tweetDictionary = response.result.value as? [String: Any] {
+                print(response)
+                let tweet = Tweet(dictionary: tweetDictionary)
+                completion(tweet, nil)
+            } else {
+                completion(nil, response.result.error)
+            }
+        }
+    }
+    
     
     
     // MARK: TODO: Retweet
@@ -152,6 +169,26 @@ class APIManager: SessionManager {
     
 
     // MARK: TODO: Un-Retweet
+    func unretweet(_ tweet: Tweet, completion: @escaping (Tweet?, Error?) -> ()) {
+        let urlString = "https://api.twitter.com/1.1/statuses/unretweet/\(tweet.id).json"
+        let parameters = ["id" : tweet.id]
+        
+        request(URL(string:urlString)!, method: .post, parameters: parameters, encoding: URLEncoding.queryString)
+            .validate()
+            .responseJSON { (response) in
+                if response.result.isSuccess,
+                    let tweetDictionary = response.result.value as? [String: Any] {
+                    print(response)
+                    let tweet = Tweet(dictionary: tweetDictionary)
+                    completion(tweet, nil)
+                } else {
+                    //print(response.result.error)
+                    completion(nil, response.result.error)
+                }
+        }
+        
+    }
+    
     
     // MARK: TODO: Compose Tweet
     
