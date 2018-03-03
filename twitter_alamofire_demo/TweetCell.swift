@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class TweetCell: UITableViewCell {
     
@@ -29,8 +30,7 @@ class TweetCell: UITableViewCell {
             userScreenName.text = "@\(tweet.user.screenName)"
             createdAt.text = tweet.createdAtString
             retweetCount.text = (String(tweet.retweetCount))
-            //new
-            //profileImageView.af_setImage(withURL: tweet.user.profile_url)
+            profileImageView.af_setImage(withURL: tweet.user.profileImage)
             
             if(tweet.favorited)!{
                 favoriteButton.setImage(#imageLiteral(resourceName: "favor-icon-red"), for: .normal)
