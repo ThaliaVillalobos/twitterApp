@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>AlamofireImage.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 		<key>KeychainAccess.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -52,6 +57,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>2652913EC912616E98952A67064A93D8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>289DD0C6643C906F884FC95992A5EDAE</key>
 		<dict>
 			<key>primary</key>
@@ -73,6 +83,11 @@
 			<true/>
 		</dict>
 		<key>8905DB6521F8FDC34752B69DEE3FDEB7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9EFE4C70245EE2857D336B8B9FA4E825</key>
 		<dict>
 			<key>primary</key>
 			<true/>
