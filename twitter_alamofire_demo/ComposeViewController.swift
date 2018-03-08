@@ -22,17 +22,16 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     
     weak var delegate: ComposeViewControllerDelegate?
     var secondLabel: UILabel!
-    var tweet: Tweet!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         newTweet.delegate = self
         newTweet.isEditable = true
-      /*
-        userNameLabel.text = tweet.user.name
-        userScreenNameLabel.text = "@\(tweet.user.screenName)"
-        userImage.af_setImage(withURL: tweet.user.profileImage!)
-*/
+        
+        userNameLabel.text = User.current?.name
+        userScreenNameLabel.text = "@\(String(describing: User.current!.screenName))"
+        userImage.af_setImage(withURL: (User.current?.profileImage!)!)
+        
         if let navigationBar = self.navigationController?.navigationBar {
             let secondFrame = CGRect(x: navigationBar.frame.width/1.4, y: 0, width: navigationBar.frame.width/2, height: navigationBar.frame.height)
     
