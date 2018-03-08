@@ -39,6 +39,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     
     //TweetButton action
     @IBAction func didTapPost(_ sender: Any) {
+        print("about to post tweet")
         APIManager.shared.composeTweet(with: "hello") { (tweet, error) in
             if let error = error {
                 print("Error composing Tweet: \(error.localizedDescription)")

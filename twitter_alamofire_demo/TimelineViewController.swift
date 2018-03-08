@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimelineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TimelineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate {
     
     var tweets: [Tweet] = []
     var refreshControl: UIRefreshControl!
@@ -39,7 +39,12 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
             let tweet = tweets[indexPath.row]
             let detailViewController = segue.destination as! DetailViewController
             detailViewController.tweet = tweet
-        }
+        }else if (sender as? UIBarButtonItem) != nil{
+            let composeViewController = segue.destination as! ComposeViewController
+            composeViewController.delegate = self
+            
+            }
+            
         }
     }
 
