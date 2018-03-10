@@ -13,6 +13,12 @@ class User {
     var name: String
     var screenName: String
     var profileImage: URL?
+    var banner_url: URL
+    var followers: Int?
+    var following: Int?
+    var location: String
+    var tweets: Int?
+    var description: String
     
     // For user persistance
     var dictionary: [String: Any]?
@@ -44,9 +50,23 @@ class User {
     
     init(dictionary: [String: Any]) {
         self.dictionary = dictionary
+        print("whatever")
+        
         name = dictionary["name"] as! String
         screenName = dictionary["screen_name"] as! String
         profileImage = URL(string: dictionary["profile_image_url_https"] as! String)
+        followers = dictionary["followers_count"] as? Int
         
+        if !(dictionary["profile_banner_url"] is NSNull){
+            banner_url = URL(string: dictionary["profile_banner_url"] as! String)!
+        }
+        else{
+            banner_url = URL(string: "nil")!
+        }
+        
+        location = dictionary["location"] as! String
+        following = dictionary["friends_count"] as? Int
+        tweets = dictionary["statuses_count"] as? Int
+        description = dictionary["description"] as! String
     }
 }
