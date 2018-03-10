@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -190,12 +191,24 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home Timeline" id="9Zi-uW-GTS">
-                        <barButtonItem key="leftBarButtonItem" image="edit-icon" id="EYp-kR-gbD">
-                            <connections>
-                                <action selector="didTapPost:" destination="5YO-Vh-39k" id="C0x-o1-8Rs"/>
-                                <segue destination="Rgl-cl-CZu" kind="presentation" id="E62-l4-I1f"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem image="edit-icon" id="EYp-kR-gbD">
+                                <connections>
+                                    <action selector="didTapPost:" destination="5YO-Vh-39k" id="C0x-o1-8Rs"/>
+                                    <segue destination="Rgl-cl-CZu" kind="presentation" id="E62-l4-I1f"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="I3V-zW-7cd">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9B5-Gh-aJr">
+                                    <rect key="frame" x="65" y="7" width="26" height="26"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="profile-Icon"/>
+                                    <connections>
+                                        <segue destination="sX0-Zh-cGC" kind="show" id="fNK-vX-gUE"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="hz2-ji-ft0">
                             <connections>
                                 <action selector="didTapLogout:" destination="5YO-Vh-39k" id="fM7-h5-mq1"/>
@@ -376,7 +389,37 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t0I-qq-n4v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2436" y="36.431784107946029"/>
+            <point key="canvasLocation" x="3375" y="37"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="9y8-zL-v7M">
+            <objects>
+                <viewController id="vLe-Mf-VJG" customClass="ProfileViewController" customModule="twitter_alamofire_demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OZi-Xu-HFJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="tiC-ef-O4q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RHN-3B-064">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ufi-iZ-x2M">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="JV8-GB-Gw4">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Pxc-pj-Vso">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="&lt; Home"/>
+                                <connections>
+                                    <action selector="onTapHome:" destination="vLe-Mf-VJG" eventType="touchUpInside" id="iNf-fS-pKX"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ArF-cC-jpG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4312.8000000000002" y="745.27736131934034"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WXZ-z8-8LI">
@@ -414,11 +457,30 @@
             </objects>
             <point key="canvasLocation" x="2436" y="-679.61019490254876"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="VaU-gE-6gK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sX0-Zh-cGC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1rv-fJ-bki">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vLe-Mf-VJG" kind="relationship" relationship="rootViewController" id="9id-gp-h5a"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fWq-o7-bi1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3373.5999999999999" y="745.27736131934034"/>
+        </scene>
     </scenes>
     <resources>
         <image name="TwitterLogoBlue" width="200" height="200"/>
         <image name="edit-icon" width="30" height="27"/>
         <image name="favor-icon" width="30" height="30"/>
+        <image name="profile-Icon" width="26" height="26"/>
         <image name="retweet-icon" width="30" height="30"/>
     </resources>
 </document>
