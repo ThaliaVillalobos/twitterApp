@@ -50,14 +50,14 @@ class User {
     
     init(dictionary: [String: Any]) {
         self.dictionary = dictionary
-        print("whatever")
+        //print("whatever")
         
         name = dictionary["name"] as! String
         screenName = dictionary["screen_name"] as! String
         profileImage = URL(string: dictionary["profile_image_url_https"] as! String)
         followers = dictionary["followers_count"] as? Int
         
-        if !(dictionary["profile_banner_url"] is NSNull){
+        if !(dictionary["profile_banner_url"] == nil){
             banner_url = URL(string: dictionary["profile_banner_url"] as! String)!
         }
         else{
