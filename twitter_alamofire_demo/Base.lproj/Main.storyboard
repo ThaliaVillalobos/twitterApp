@@ -368,11 +368,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBL-93-WcO">
-                                <rect key="frame" x="298" y="424" width="30" height="30"/>
+                                <rect key="frame" x="311" y="424" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="reply-icon"/>
                                 <connections>
-                                    <segue destination="LWS-AC-8bf" kind="modal" id="J5X-TC-wFL"/>
+                                    <segue destination="Rq2-XM-BLH" kind="show" identifier="replySegue" id="m7e-KU-38u"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -392,35 +392,54 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t0I-qq-n4v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3373.5999999999999" y="36.431784107946029"/>
+            <point key="canvasLocation" x="2436" y="36"/>
         </scene>
         <!--Reply View Controller-->
-        <scene sceneID="09a-a1-Ku6">
+        <scene sceneID="g0P-SA-uqj">
             <objects>
-                <viewController id="LWS-AC-8bf" customClass="ReplyViewController" customModule="twitter_alamofire_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Rq2-XM-BLH" customClass="ReplyViewController" customModule="twitter_alamofire_demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="GDj-N7-MCz"/>
-                        <viewControllerLayoutGuide type="bottom" id="0R6-ZX-D19"/>
+                        <viewControllerLayoutGuide type="top" id="zL3-0o-OTu"/>
+                        <viewControllerLayoutGuide type="bottom" id="8mG-6m-uPS"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="iLH-pC-3b4">
+                    <view key="view" contentMode="scaleToFill" id="Qrq-95-sGm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="26G-ya-OdL">
-                                <rect key="frame" x="16" y="62" width="343" height="188"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="140" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odr-Qt-KDz">
+                                <rect key="frame" x="317" y="72" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dI0-x2-SDC">
+                                <rect key="frame" x="164" y="346" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Reply"/>
+                                <connections>
+                                    <action selector="didTapReply:" destination="Rq2-XM-BLH" eventType="touchUpInside" id="Yx1-rt-VRs"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Xsp-xz-mLv">
+                                <rect key="frame" x="16" y="117" width="343" height="196"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="h19-qc-41V"/>
+                    <connections>
+                        <outlet property="characterCountLabel" destination="Odr-Qt-KDz" id="s0g-7T-dSi"/>
+                        <outlet property="replyText" destination="Xsp-xz-mLv" id="YdQ-bw-oIk"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yON-6g-bZ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TnX-hQ-Ad2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4124" y="36.431784107946029"/>
+            <point key="canvasLocation" x="3373.5999999999999" y="68.815592203898049"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="9y8-zL-v7M">
